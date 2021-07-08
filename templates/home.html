@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movie Recommendation System</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<!-- Auto Complete -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/css/autoComplete.min.css">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+		<script type="text/javascript">
+			console.log("running inline script home");
+			let films = {{autocomplete_suggestions|tojson}};
+			console.log(suggestions);
+			console.log(films);
+		</script>
+	</head>
+	<body id="content" style="font-family: 'Noto Sans JP', sans-serif;">
+
+		<div class = "main-heading-container mb-5">
+			<h1 class = "main-heading text-primary font-weight-bold">Watch NonStop</h1>
+		</div>
+
+		<div class="ml-container mb-3" style="display: block;"></div>
+			<div class = "punchline-container text-center mb-5">
+				<h1 class = "punchline text-white font-weight-bold m-auto text-danger">Choose from more than 6000 movies and shows</h1>
+			</div>
+			<div class="form-group shadow-textarea movie-input-container">
+				<input type="text" name="movie" class="form-control movie" id="autoComplete" autocomplete="off" placeholder="Enter the Movie Name" required="required" />
+				<br>
+			</div>
+			<div class="text-center mt-5 mb-5">
+				<button class="btn movie-button btn-primary d-inline text-center" disabled="true" id = "movie-button">Enter</button>&nbsp;&nbsp;
+				<button class="btn reset-button btn-primary d-inline text-center" disabled="true" id = "reset-button">Reset</button>
+			</div>
+		</div>
+
+		<div id="loader" class="text-center"> </div>
+	
+		<div class = "fail text-center">		
+			<h3>Sorry! The movie you requested is not in our database. 
+			Please check the spelling or try with other movies!</h3>
+		</div>
+		
+		<!-- RESULTS DIVISION -->
+		<div class = "results" id = "results">
+			<h2 id="name" class="text-uppercase text-center mb-5 font-weight-bold" style="color: white;">Searched Movie</h2>
+			<div class = "searched-movie-card"  id = "searched-movie-card">
+				<div class="card mb-3 searched-movie-card">
+					<img src="" alt="" id = "searched-movie-poster" class = "card-img-top searched-movie-poster">
+					<div class="card-body">
+						<h5 class="card-title text-left" id = "searched-movie-title">Searched Movie Title</h5>
+						<p class="card-text text-left" id = "searched-movie-description">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+						<p class="card-text text-left" ><small class="text-muted" id = "searched-movie-genres">Genres</small></p>
+					</div>
+				</div>
+			</div>
+
+			<h2 id="name" class="text-uppercase text-center mb-5 font-weight-bold" style="color: white;">Recommended Movies</h2>
+			<div class = "container recommended-movies-container" id = "recommended-movies-container">
+				<div class = "row">
+					<div class = "col-sm-12 col-md-6 mb-2 recommended-movie-card">
+						<div class="card h-100">
+							<img src="" alt="" id = "recommended-movie-poster-1" class = "card-img-top recommended-movie-poster">
+							<div class="card-body">
+								<h5 class="card-title text-left" id = "recommended-movie-title-1">Searched Movie Title</h5>
+								<p class="card-text text-left" id = "recommended-movie-description-1">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text text-left"><small class="text-muted"  id = "recommended-movie-genres-1">Genres</small></p>
+							</div>
+						</div>
+					</div>
+					<div class = "col-sm-12 col-md-6 mb-2 recommended-movie-card">
+						<div class="card h-100">
+							<img src="" alt="" id = "recommended-movie-poster-2" class = "card-img-top recommended-movie-poster">
+							<div class="card-body">
+								<h5 class="card-title text-left" id = "recommended-movie-title-2">Searched Movie Title</h5>
+								<p class="card-text text-left" id = "recommended-movie-description-2">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text text-left"><small class="text-muted" id = "recommended-movie-genres-2">Genres</small></p>
+							</div>
+						</div>
+					</div>
+					<div class = "col-sm-12 col-md-6 mb-2 recommended-movie-card">
+						<div class="card h-100">
+							<img src="" alt="" id = "recommended-movie-poster-3" class = "card-img-top recommended-movie-poster">
+							<div class="card-body">
+								<h5 class="card-title text-left" id = "recommended-movie-title-3">Searched Movie Title</h5>
+								<p class="card-text text-left" id = "recommended-movie-description-3">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text text-left"><small class="text-muted"  id = "recommended-movie-genres-3">Genres</small></p>
+							</div>
+						</div>
+					</div>
+					<div class = "col-sm-12 col-md-6 mb-2 recommended-movie-card">
+						<div class="card h-100">
+							<img src="" alt="" id = "recommended-movie-poster-4" class = "card-img-top recommended-movie-poster">
+							<div class="card-body">
+								<h5 class="card-title text-left" id = "recommended-movie-title-4">Searched Movie Title</h5>
+								<p class="card-text text-left" id = "recommended-movie-description-4">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text text-left"><small class="text-muted"  id = "recommended-movie-genres-4">Genres</small></p>
+							</div>
+						</div>
+					</div>
+					<div class = "col-sm-12 col-md-6 recommended-movie-card m-auto">
+						<div class="card h-100">
+							<img src="" alt="" id = "recommended-movie-poster-5" class = "card-img-top recommended-movie-poster">
+							<div class="card-body">
+								<h5 class="card-title text-left" id = "recommended-movie-title-5">Searched Movie Title</h5>
+								<p class="card-text text-left" id = "recommended-movie-description-5">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text text-left"><small class="text-muted"  id = "recommended-movie-genres-5">Genres</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		
+		<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='auto_complete.js')}}"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='main.js')}}"></script>
+		
+	</body>
+</html>
