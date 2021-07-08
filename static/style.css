@@ -1,0 +1,120 @@
+#content {
+	background-image: url("../static/background_1.jpg");
+	background-color: #181818;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.main-heading {
+	color: blue;
+	text-shadow: 5px 5px black;
+	font-weight: bolder;
+}
+
+
+.movie-input-container {
+	margin-top: 30px;
+	text-align: center;
+	color: white;
+}
+
+.punchline {
+    width: 45%;
+	text-shadow: 3px 3px black;
+}
+
+.movie {
+	background-color: #ffffff;
+	border-color:#ffffff !important;
+	width: 60% !important;
+	color: #181818;
+	margin-left: auto;
+	margin-right: auto;
+	resize: none;
+}
+
+.movie-button {
+	background-color: #e50914 !important;
+	border-color: #e50914 !important;
+	width:120px;
+}
+
+.reset-button {
+	background-color: blue !important;
+	border-color: blue !important;
+	width:120px;
+}
+
+#loader {
+	display: none;
+	position: fixed;
+	z-index: 100;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../static/loader.gif");
+
+	background-size: 10%;
+	background-position: 50% 50%;
+	background-color: rgba(255, 255, 255, 1);
+	background-repeat: no-repeat;
+	-webkit-transition: background-image 0.2s ease-in-out;
+	transition: background-image 0.2s ease-in-out;
+}
+
+#loader-text {
+	vertical-align: middle;
+	color:white;
+}
+
+.results {
+	display: none;
+	padding: 10%;
+}
+
+.searched-movie-card {
+	margin-right: auto;
+	margin-left: auto;
+	width: 75% !important;
+	height: 50% !important;
+	overflow-y: scroll;
+}
+
+.searched-movie-poster {
+	width: 100%;
+	height: auto;
+}
+
+.recommended-movie-card {
+	overflow-y: scroll;
+}
+
+.recommended-movie-poster {
+	width: 100%;
+	height: auto;
+}
+
+
+.movie-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:space-around;
+}
+
+.movie-content > div {
+    margin:20px;
+}
+
+.btn-block{
+	width: 15%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	color: #e4e0e0;
+}
+
+
+.fail {
+	display: none;
+	color: white;
+}
